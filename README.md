@@ -3,7 +3,7 @@
 An easy implementation following "Build your Own Lisp"
 
 ```mermaid
-flowgraph TB
+flowchart TB
     v("values") --> g("global_st")
     v --> p("parse")
     v --> e("eval")
