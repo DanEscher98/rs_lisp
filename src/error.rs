@@ -3,7 +3,7 @@ use rustyline::error::ReadlineError;
 use std::{fmt::Debug, hash::Hash};
 
 #[derive(Error, Debug)]
-enum LispError {
+pub enum RsLispError {
     #[error("Divide by Zero")]
     DivideByZero,
 
@@ -35,17 +35,17 @@ enum LispError {
     UnknownFunction(String)
 }
 
-impl<T> From<pest::error::Error<T>> for LispError
+impl<T> From<pest::error::Error<T>> for RsLispError
 where
     T: Debug + Ord + Copy + Hash
 {
     fn from(error: pest::error::Error<T>) -> Self {
-        LispError::ParseError(format!("{}", error))
+        RsLispError::ParseError(format!("{}", error))
     }
 }
 
-impl From<std::io::Error> for LispError {
+impl From<std::io::Error> for RsLispError {
     fn from(error: std::io::Error) -> Self {
-        LispError::ParseError(error.to_string())
+        RsLispError::ParseError(error.to_string())
     }
 }

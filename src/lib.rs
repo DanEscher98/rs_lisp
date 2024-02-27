@@ -5,8 +5,8 @@ pub mod run;
 pub mod cli;
 pub mod values;
 
-use crate::values::LambdaValue;
+use crate::values::RsLispValue;
 
 pub type Result<T> = anyhow::Result<T, anyhow::Error>;
-pub type LambdaResult = Result<Box<LambdaValue>>;
+pub type RsLispResult = Result<Box<RsLispValue>>;
 
